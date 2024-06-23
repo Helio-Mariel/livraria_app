@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cliente API</h1>
+  <button onclick="getCliente()">Obter todos os Clientes</button>
+    <table id="clientesTable" border="1">
+        <thead>
+          <tr>
+            <th scope="col">id_cliente</th>
+            <th scope="col">nome</th>
+            <th scope="col">apelido</th>
+            <th scope="col">password</th>
+            <th scope="col">email</th>
+            <th scope="col">n_telefone</th>
+            <th scope="col">nacionalidade</th>
+            <th scope="col">BI</th>
+            <th scope="col">profissao</th>
+            <th scope="col">morada</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+      <pre id="apiResponse"></pre>
+      <script src="support/api/api.js"></script>
+</body>
+</html>
