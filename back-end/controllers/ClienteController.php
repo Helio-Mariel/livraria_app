@@ -56,7 +56,33 @@ class ClienteController
           );
           $result = $this->cliente->createCliente($cliente);
           echo json_encode($result);
+        } else if ($this->endpoint === '/criar') {
+
+          $nome = 'nome';
+          $apelido = 'apelido';
+          $password = 'password';
+          $email = 'email';
+          $n_telefone = 'n_telefone';
+          $nacionalidade = 'nacionalidade';
+          $BI = 'BI';
+          $profissao = 'profissao';
+          $morada = 'morada';
+
+          $cliente = new ClienteDTO(
+            $nome,
+            $apelido,
+            $password,
+            $email,
+            $n_telefone,
+            $nacionalidade,
+            $BI,
+            $profissao,
+            $morada
+          );
+          $result = $this->cliente->createCliente($cliente);
+          echo json_encode($result);
         }
+
         break;
       case 'DELETE':
         if (preg_match('/^\/user\/(\d+)$/', $this->endpoint, $matches)) {
