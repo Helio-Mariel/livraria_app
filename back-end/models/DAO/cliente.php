@@ -43,7 +43,7 @@ class ClienteDAO
     $stm->bindParam(":morada", $clienteDTO->morada);
 
     $stm->execute();
-    return ($stm);
+    return $stm;
   }
 
   public function DeleteCliente($id_cliente)

@@ -57,17 +57,16 @@ class ClienteController
           $result = $this->cliente->createCliente($cliente);
           echo json_encode($result);
         } else if ($this->endpoint === '/criar') {
-
-          $nome = 'nome';
-          $apelido = 'apelido';
-          $password = 'password';
-          $email = 'email';
-          $n_telefone = 'n_telefone';
-          $nacionalidade = 'nacionalidade';
-          $BI = 'BI';
-          $profissao = 'profissao';
-          $morada = 'morada';
-
+          $data = json_decode(file_get_contents('php://input'), true);
+          $nome = $data['nome'];
+          $apelido = $data['apelido'];
+          $password = $data['password'];
+          $email = $data['email'];
+          $n_telefone = $data['n_telefone'];
+          $nacionalidade = $data['nacionalidade'];
+          $BI = $data['BI'];
+          $profissao = $data['profissao'];
+          $morada = $data['morada'];
           $cliente = new ClienteDTO(
             $nome,
             $apelido,
@@ -80,7 +79,7 @@ class ClienteController
             $morada
           );
           $result = $this->cliente->createCliente($cliente);
-          echo json_encode($result);
+          echo json_encode($nome);
         }
 
         break;
