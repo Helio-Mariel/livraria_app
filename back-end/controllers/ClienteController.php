@@ -33,7 +33,7 @@ class ClienteController
         break;
         //
       case 'POST':
-        if ($this->endpoint === '/user') {
+        if ($this->endpoint === '/user/criar') {
           $data = json_decode(file_get_contents('php://input'), true); // For a real application, consider filtering this data
           $nome = $data['nome'];
           $apelido = $data['apelido'];
@@ -60,11 +60,12 @@ class ClienteController
           echo json_encode($result);
         } else if ($this->endpoint === '/cliente/login') {
           $data = json_decode(file_get_contents('php://input'), true);
+
           $email = $data['email'];
           $password = $data['password'];
 
           $result = $this->cliente->loginCliente($email, $password);
-          echo json_encode($result);
+          echo json_encode([$result]);
         }
         break;
         //

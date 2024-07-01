@@ -41,6 +41,21 @@ document.getElementById('login').addEventListener('submit', function (event) {
 
 })
 
+document.getElementById('admin-login').addEventListener('submit', function (event) {
+    event.preventDefault()
+
+    const username = document.getElementById('username').value
+    const password = document.getElementById('password').value
+
+    axios.post(`${apiBaseUrl}/user`, { username, password }
+    ).then(response => {
+        alert("Sucesso")
+        window.location.href = '/livraria_app/front-end/views/admin/index.html'
+    }).catch(error => {
+        alert("Erro")
+    })
+})
+
 
 
 
