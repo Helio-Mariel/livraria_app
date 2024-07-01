@@ -20,6 +20,7 @@ class ClienteController
     header('Content-Type: application/json');
 
     switch ($this->method) {
+        //
       case 'GET':
         if ($this->endpoint === '/user') {
           $result = $this->cliente->getCliente();
@@ -30,6 +31,7 @@ class ClienteController
           echo json_encode([$result]);
         }
         break;
+        //
       case 'POST':
         if ($this->endpoint === '/user') {
           $data = json_decode(file_get_contents('php://input'), true); // For a real application, consider filtering this data
@@ -56,33 +58,16 @@ class ClienteController
           );
           $result = $this->cliente->createCliente($cliente);
           echo json_encode($result);
-        } else if ($this->endpoint === '/criar') {
+        } else if ($this->endpoint === '/cliente/login') {
           $data = json_decode(file_get_contents('php://input'), true);
-          $nome = $data['nome'];
-          $apelido = $data['apelido'];
-          $password = $data['password'];
           $email = $data['email'];
-          $n_telefone = $data['n_telefone'];
-          $nacionalidade = $data['nacionalidade'];
-          $BI = $data['BI'];
-          $profissao = $data['profissao'];
-          $morada = $data['morada'];
-          $cliente = new ClienteDTO(
-            $nome,
-            $apelido,
-            $password,
-            $email,
-            $n_telefone,
-            $nacionalidade,
-            $BI,
-            $profissao,
-            $morada
-          );
-          $result = $this->cliente->createCliente($cliente);
-          echo json_encode($nome);
-        }
+          $password = $data['password'];
 
+          $result = $this->cliente->loginCliente($email, $password);
+          echo json_encode($result);
+        }
         break;
+        //
       case 'DELETE':
         if (preg_match('/^\/user\/(\d+)$/', $this->endpoint, $matches)) {
           $id_cliente = $matches[1];

@@ -19,11 +19,28 @@ document.getElementById('sign_up').addEventListener('submit', function (event) {
     axios.post(`${apiBaseUrl}/user`, { nome, apelido, password, nacionalidade, BI, n_telefone, email, profissao, morada }
     ).then(response => {
         alert("Sucesso")
-        window.location.href = '/index1.html'
+        window.location.href = '/livraria_app/front-end/views/index.html'
     }).catch(error => {
         alert("Erro")
     })
+})
 
+document.getElementById('login').addEventListener('submit', function (event) {
+    event.preventDefault();
 
+    const email = document.getElementById('email').value
+    const password = document.getElementById('password').value
+
+    axios.post(`${apiBaseUrl}/cliente/login`, { email, password }
+    ).then(response => {
+        alert("Sucesso")
+        window.location.href = '/livraria_app/front-end/views/index.html'
+    }).catch(error => {
+        alert("Erro")
+    });
 
 })
+
+
+
+

@@ -46,6 +46,22 @@ class ClienteDAO
     return $stm;
   }
 
+  public function loginCliente($email, $password)
+  {
+    $stm = $this->pdo->prepare("SELECT * FROM cliente WHERE email = :email");
+    $stm->bindParam(":email", $email);
+    $stm->execute();
+
+    $clienteDTO = $stm->fetch(PDO::FETCH_ASSOC);
+
+    if ($clienteDTO && password_verify($password, $clienteDTO['password'])) {
+      $_SESSION['id_cliente'] = $clienteDTO['id_cliente'];
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   public function DeleteCliente($id_cliente)
   {
     $stm = $this->pdo->prepare("DELETE FROM cliente WHERE id_cliente = :id_cliente");
