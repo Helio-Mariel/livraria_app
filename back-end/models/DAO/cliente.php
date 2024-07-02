@@ -52,10 +52,10 @@ class ClienteDAO
     $stm->bindParam(":email", $email);
     $stm->execute();
 
-    $clienteDTO = $stm->fetch(PDO::FETCH_ASSOC);
+    $cliente = $stm->fetch(PDO::FETCH_ASSOC);
 
-    if ($clienteDTO && password_verify($password, $clienteDTO['password'])) {
-      $_SESSION['id_cliente'] = $clienteDTO['id_cliente'];
+    if ($cliente && password_verify($password, $cliente['password'])) {
+      $_SESSION['id_cliente'] = $cliente['id_cliente'];
       return true;
     } else {
       return false;

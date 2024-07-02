@@ -1,15 +1,15 @@
 const apiBaseUrl = 'http://localhost/livraria_app/back-end/index.php/'
 const output = document.getElementById('apiResponse')
-document.addEventListener('DOMContentLoaded', function () { getCliente() }) 
+document.addEventListener('DOMContentLoaded', function () { getCliente() })
 
 function getCliente() {
   axios.get(`${apiBaseUrl}/user`)
     .then(response => {
       const clientes = response.data
       const tableBody = document.querySelector('#clientesTable tbody')
-        tableBody.innerHTML = ''
-        
-        console.log(clientes)
+      tableBody.innerHTML = ''
+
+      console.log(clientes)
 
       clientes.forEach(cliente => {
         const row = `<tr>

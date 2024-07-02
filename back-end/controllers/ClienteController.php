@@ -34,7 +34,8 @@ class ClienteController
         //
       case 'POST':
         if ($this->endpoint === '/user/criar') {
-          $data = json_decode(file_get_contents('php://input'), true); // For a real application, consider filtering this data
+          $data = json_decode(file_get_contents('php://input'), true);
+
           $nome = $data['nome'];
           $apelido = $data['apelido'];
           $password = $data['password'];
@@ -65,7 +66,7 @@ class ClienteController
           $password = $data['password'];
 
           $result = $this->cliente->loginCliente($email, $password);
-          echo json_encode([$result]);
+          echo json_encode($result);
         }
         break;
         //

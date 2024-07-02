@@ -47,7 +47,7 @@ document.getElementById('admin-login').addEventListener('submit', function (even
     const username = document.getElementById('username').value
     const password = document.getElementById('password').value
 
-    axios.post(`${apiBaseUrl}/user`, { username, password }
+    axios.post(`${apiBaseUrl}/admin/login`, { username, password }
     ).then(response => {
         alert("Sucesso")
         window.location.href = '/livraria_app/front-end/views/admin/index.html'
